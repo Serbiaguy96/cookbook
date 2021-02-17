@@ -1,0 +1,2 @@
+export const RECEIVE_ERROR = "ERRORS:RECEIVE_ERROR";
+export const ERASE_ERROR = "ERRORS:ERASE_ERROR";
