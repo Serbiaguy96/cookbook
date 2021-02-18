@@ -1,7 +1,7 @@
 import axiosWrapper from "../axiosWrapper";
 import { RecipesList } from "../../store/recipes/types";
 import { getRecipesUrl, postRecipeUrl } from "./urlParsers";
-import { Recipe } from "../../store/recipeDetail/types";
+import { Recipe, RecipeDTO } from "../../store/recipeDetail/types";
 
 export const fetchRecipes = (limit?: number, offset?: number) =>
   axiosWrapper<RecipesList>({
@@ -9,8 +9,11 @@ export const fetchRecipes = (limit?: number, offset?: number) =>
     method: "GET",
   });
 
-export const postRecipe = (recipe: Recipe) =>
+export const postRecipe = (recipe: RecipeDTO) =>
   axiosWrapper<Recipe>({
     url: postRecipeUrl(),
     method: "POST",
+    data: {
+      ...recipe,
+    },
   });

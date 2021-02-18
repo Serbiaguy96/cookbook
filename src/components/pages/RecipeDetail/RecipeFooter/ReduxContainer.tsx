@@ -27,7 +27,7 @@ const ReduxContainer = ({ recipeId }: ReduxContainerProps) => {
   const handleRecipeRating = (newScore: number) => {
     if (!recipeScore) {
       setRecipeScore(newScore);
-      //postRecipeRating(recipeId, newScore);
+      postRecipeRating(recipeId, newScore);
     }
   };
 

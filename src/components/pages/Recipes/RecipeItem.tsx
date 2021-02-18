@@ -10,7 +10,6 @@ import small_plate from "../../../assets/images/small_plate.png";
 import { useHistory } from "react-router-dom";
 import ScoreStars from "../../atoms/ScoreStars";
 import { APP_COLORS } from "../../../global/globalConstants";
-import { SMALL } from "../../atoms/ScoreStars/constants";
 import TimeEntry from "../../atoms/TimeEntry";
 import { DARK_THEME } from "../../atoms/TimeEntry/constants";
 
@@ -33,7 +32,7 @@ const RecipeItem = ({ name, id, key, duration, score }: RecipeItemProps) => {
         <ScoreStars
           score={score}
           starsColor={APP_COLORS.secondaryColor}
-          starsSize={SMALL}
+          starsSize={16}
           disabled
         />
         <TimeEntry time={duration} theme={DARK_THEME} />

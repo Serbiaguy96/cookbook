@@ -18,6 +18,7 @@ export const HeaderImageContainer = styled.div`
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
+  z-index: 10;
 `;
 
 export const ActionsContainer = styled.div`

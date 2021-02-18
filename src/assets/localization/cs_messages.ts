@@ -12,10 +12,18 @@ const cs_messages = {
 
   "recipe.detail.prepare": "Příprava jídla",
   "recipe.detail.rating": "Ohodnoť tento recept",
+  "recipe.detail.rated": "Tento recept jsi ohodnotil",
 
   "error.400": "Ale ne, něco se pokazilo!",
   "error.404": "Ale ne, taková stránka tu neexistuje.",
-  "error.back": "Zpět na seznam receptů"
+  "error.back": "Zpět na seznam receptů",
+  "error.name": "Název musí obsahovat slovo  \"ackee\"!",
+  "error.time": "Čas přípravy musí být kladné číslo.",
+  "error.mandatory": "Toto pole je povinné.",
+
+  "success.new": "Nový recept byl úspěšně přidán",
+  "success.common": "Akce byla úspěšně provedena",
+  "success.back": "zpět na hlavní stránku",
 };
 
 export default cs_messages;

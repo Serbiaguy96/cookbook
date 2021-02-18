@@ -6,7 +6,6 @@ import {
 } from "./styles";
 import { useIntl } from "react-intl";
 import ScoreStars from "../../../atoms/ScoreStars";
-import { LARGE } from "../../../atoms/ScoreStars/constants";
 
 export type RecipeFooterProps = {
   handleRecipeRating: (newScore: number) => void;
@@ -15,18 +14,21 @@ export type RecipeFooterProps = {
 
 const RecipeFooter = ({ handleRecipeRating, score }: RecipeFooterProps) => {
   const { formatMessage } = useIntl();
+  const rated = score !== undefined;
   return (
     <RecipeFooterContainer>
       <RecipeFooterSpan>
-        {formatMessage({ id: "recipe.detail.rating" })}
+        {rated
+          ? formatMessage({ id: "recipe.detail.rated" })
+          : formatMessage({ id: "recipe.detail.rating" })}
       </RecipeFooterSpan>
       <StarsContainer>
         <ScoreStars
           score={score || 0}
           starsColor="#ffffff"
-          disabled={score !== undefined}
+          disabled={rated}
           handleStarClick={handleRecipeRating}
-          starsSize={LARGE}
+          starsSize={40}
         />
       </StarsContainer>
     </RecipeFooterContainer>

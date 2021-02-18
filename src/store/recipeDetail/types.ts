@@ -1,5 +1,5 @@
-import {ERASE_RECIPE, IS_RECIPE_LOADING, RECEIVE_RECIPE} from "./actionTypes";
-import {StringIndexedDictionary} from "../../global/globalTypes";
+import { ERASE_RECIPE, IS_RECIPE_LOADING, RECEIVE_RECIPE } from "./actionTypes";
+import { StringIndexedDictionary } from "../../global/globalTypes";
 
 export interface Recipe {
   name: string;
@@ -9,6 +9,22 @@ export interface Recipe {
   info: string;
   id: string;
   score: number;
+}
+
+export interface RecipeDTO {
+  name: string;
+  description: string;
+  duration: number;
+  ingredients: string[];
+  info: string;
+}
+
+export interface UpdateRecipeDTO {
+  name?: string;
+  description?: string;
+  duration?: number;
+  ingredients?: string[];
+  info?: string;
 }
 
 export interface RecipeDetailState {

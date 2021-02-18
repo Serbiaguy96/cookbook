@@ -1,6 +1,11 @@
 import { useDispatch } from "react-redux";
 import { useCallback } from "react";
-import { fetchInitialRecipesThunk, fetchNewRecipesThunk } from "./thunks";
+import {
+  createNewRecipeThunk,
+  fetchInitialRecipesThunk,
+  fetchNewRecipesThunk,
+} from "./thunks";
+import { RecipeDTO } from "../recipeDetail/types";
 
 export const useFetchRecipes = () => {
   const dispatch = useDispatch();
@@ -10,4 +15,12 @@ export const useFetchRecipes = () => {
 export const useInitialFetchRecipes = () => {
   const dispatch = useDispatch();
   return useCallback(() => dispatch(fetchInitialRecipesThunk()), [dispatch]);
+};
+
+export const usePostNewRecipe = () => {
+  const dispatch = useDispatch();
+  return useCallback(
+    (recipeData: RecipeDTO) => dispatch(createNewRecipeThunk(recipeData)),
+    [dispatch]
+  );
 };

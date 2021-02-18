@@ -1,12 +1,12 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Rating from "@material-ui/lab/Rating";
-import {APP_COLORS} from "../../../global/globalConstants";
+import { APP_COLORS } from "../../../global/globalConstants";
 
 export type ScoreStarsProps = {
   score: number;
   starsColor: string;
-  starsSize?: "small" | "large";
+  starsSize: number;
   handleStarClick?: (newScore: number) => void;
   disabled?: boolean;
   nonActiveStarColor?: string;
@@ -21,12 +21,16 @@ const ScoreStars = ({
   nonActiveStarColor,
 }: ScoreStarsProps) => {
   const StyledRating = withStyles({
+    root: {
+      "font-size": `${starsSize}px !important`,
+    },
     iconFilled: {
       color: starsColor,
     },
     iconEmpty: {
       color: nonActiveStarColor || APP_COLORS.thirdColor,
-    }
+      "opacity": "0.5",
+    },
   })(Rating);
 
   const changeStarValue = (newValue: number | null) => {
@@ -40,7 +44,6 @@ const ScoreStars = ({
       value={roundedScore}
       precision={disabled ? 0.1 : 1}
       onChange={(e, value) => changeStarValue(value)}
-      size={starsSize}
     />
   );
 };

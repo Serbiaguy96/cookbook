@@ -36,6 +36,8 @@ const RecipeHeader = ({ name, duration, score }: RecipeHeaderProps) => {
           score={score}
           starsColor="#ffffff"
           nonActiveStarColor={APP_COLORS.secondaryColor}
+          disabled
+          starsSize={25}
         />
         <TimeEntry time={duration} theme={LIGHT_THEME} />
       </HeaderFooter>

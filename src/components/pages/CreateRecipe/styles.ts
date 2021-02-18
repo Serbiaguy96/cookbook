@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const RecipeDetailContainer = styled.div`
+export const CreateRecipeContainer = styled.div`
   overflow-y: auto;
   height: 100vh;
   margin: 0;

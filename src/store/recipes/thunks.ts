@@ -14,7 +14,7 @@ import {
   postRecipe,
 } from "../../requests/recipes/requestCreators";
 import { eraseErrorAction, receiveErrorAction } from "../errors/actionCreators";
-import { Recipe } from "../recipeDetail/types";
+import { RecipeDTO } from "../recipeDetail/types";
 
 export const fetchInitialRecipesThunk = (): CookBookThunk => (
   dispatch,
@@ -72,9 +72,8 @@ export const fetchNewRecipesThunk = (): CookBookThunk => (
     .finally(() => dispatch(setRecipesAreLoadingAction(false)));
 };
 
-export const createNewRecipeThunk = (recipeData: Recipe): CookBookThunk => (
-  dispatch,
-  getState
+export const createNewRecipeThunk = (recipeData: RecipeDTO): CookBookThunk => (
+  dispatch
 ) => {
   dispatch(setRecipesAreLoadingAction(true));
   postRecipe(recipeData)
