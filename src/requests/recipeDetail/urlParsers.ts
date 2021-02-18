@@ -7,3 +7,6 @@ export const updateRecipeUrl = (recipeId: string) =>
 
 export const deleteRecipeUrl = (recipeId: string) =>
   getCommonRecipeUrl(recipeId);
+
+export const postRatingUrl = (recipeId: string) =>
+  `${getCommonRecipeUrl(recipeId)}/ratings`;

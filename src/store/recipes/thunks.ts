@@ -5,6 +5,7 @@ import {
   getRecipesOffset,
 } from "./selectors";
 import {
+  receiveNewRecipesAction,
   receiveRecipesAction,
   setRecipesAreLoadingAction,
 } from "./actionCreators";
@@ -15,7 +16,7 @@ import {
 import { eraseErrorAction, receiveErrorAction } from "../errors/actionCreators";
 import { Recipe } from "../recipeDetail/types";
 
-export const fetchAllRecipesThunk = (): CookBookThunk => (
+export const fetchInitialRecipesThunk = (): CookBookThunk => (
   dispatch,
   getState
 ) => {
@@ -30,6 +31,34 @@ export const fetchAllRecipesThunk = (): CookBookThunk => (
   fetchRecipes(limit, offset)
     .then(({ data }) => {
       dispatch(receiveRecipesAction(data));
+      dispatch(eraseErrorAction());
+    })
+    .catch(({ response }) => {
+      dispatch(
+        receiveErrorAction({
+          statusCode: response.status,
+          message: response.data,
+        })
+      );
+    })
+    .finally(() => dispatch(setRecipesAreLoadingAction(false)));
+};
+
+export const fetchNewRecipesThunk = (): CookBookThunk => (
+  dispatch,
+  getState
+) => {
+  const state = getState();
+  const limit = getRecipesLimit(state);
+  const offset = getRecipesOffset(state);
+  const areLoading = getAreRecipesLoading(state);
+
+  if (areLoading) return;
+
+  dispatch(setRecipesAreLoadingAction(true));
+  fetchRecipes(limit, offset)
+    .then(({ data }) => {
+      dispatch(receiveNewRecipesAction(data));
       dispatch(eraseErrorAction());
     })
     .catch(({ response }) => {

@@ -1,20 +1,42 @@
 import React from "react";
-import {RecipeListItem} from "../../../store/recipes/types";
-import {RecipeContentContainer, RecipeContentHeader, RecipeItemContainer, RecipeSmallImage} from "./styles";
+import { RecipeListItem } from "../../../store/recipes/types";
+import {
+  RecipeContentContainer,
+  RecipeContentHeader,
+  RecipeItemContainer,
+  RecipeSmallImage,
+} from "./styles";
 import small_plate from "../../../assets/images/small_plate.png";
+import { useHistory } from "react-router-dom";
+import ScoreStars from "../../atoms/ScoreStars";
+import { APP_COLORS } from "../../../global/globalConstants";
+import { SMALL } from "../../atoms/ScoreStars/constants";
+import TimeEntry from "../../atoms/TimeEntry";
+import { DARK_THEME } from "../../atoms/TimeEntry/constants";
 
 export type RecipeItemProps = RecipeListItem & {
   key: number;
 };
 
-const RecipeItem = ({name, id, key, duration, score}: RecipeItemProps) => {
+const RecipeItem = ({ name, id, key, duration, score }: RecipeItemProps) => {
+  const { push } = useHistory();
+
+  const handleOnRecipeClick = () => {
+    push(`/recipe-detail/${id}`);
+  };
+
   return (
-    <RecipeItemContainer key={key}>
+    <RecipeItemContainer key={key} onClick={handleOnRecipeClick}>
       <RecipeSmallImage src={small_plate} alt="small-plate" />
       <RecipeContentContainer>
         <RecipeContentHeader>{name}</RecipeContentHeader>
-        <span>{score}</span>
-        <span>{duration}</span>
+        <ScoreStars
+          score={score}
+          starsColor={APP_COLORS.secondaryColor}
+          starsSize={SMALL}
+          disabled
+        />
+        <TimeEntry time={duration} theme={DARK_THEME} />
       </RecipeContentContainer>
     </RecipeItemContainer>
   );

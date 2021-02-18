@@ -7,10 +7,13 @@ import {
 import {
   deleteRecipeById,
   fetchRecipeById,
+  postRecipeRating,
   updateRecipeById,
 } from "../../requests/recipeDetail/requestCreators";
 import { eraseErrorAction, receiveErrorAction } from "../errors/actionCreators";
 import { RecipeUpdateData } from "../../requests/recipeDetail/types";
+import { COOKBOOK_SCORES } from "../../global/globalConstants";
+import { CookBookScores } from "./types";
 
 export const fetchRecipeByIdThunk = (recipeId: string): CookBookThunk => (
   dispatch,
@@ -76,4 +79,35 @@ export const deleteRecipeByIdThunk = (recipeId: string): CookBookThunk => (
       );
     })
     .finally(() => dispatch(setRecipeIsLoadingAction(false)));
+};
+
+export const postRecipeRatingThunk = (
+  recipeId: string,
+  score: number
+): CookBookThunk => (dispatch, getState) => {
+  postRecipeRating(recipeId, score)
+    .then(({ data }) => {
+      // nastavim novy score do lacalStorage pro konkretni recept v ramci prohlizece
+      const RAWcookBookScores = localStorage.getItem(COOKBOOK_SCORES);
+      let cookBookScores: CookBookScores;
+
+      if (RAWcookBookScores) {
+        cookBookScores = JSON.parse(RAWcookBookScores);
+      } else {
+        cookBookScores = {};
+      }
+
+      localStorage.setItem(
+        COOKBOOK_SCORES,
+        JSON.stringify({ ...cookBookScores, [recipeId]: data.score })
+      );
+    })
+    .catch(({ response }) => {
+      dispatch(
+        receiveErrorAction({
+          statusCode: response.status,
+          message: response.data,
+        })
+      );
+    });
 };

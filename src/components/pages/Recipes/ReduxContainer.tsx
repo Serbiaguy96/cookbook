@@ -1,15 +1,15 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import {
   useAreRecipesLoading,
   useRecipesData,
 } from "../../../store/recipes/useSelectors";
 import Recipes from "./Recipes";
-import {useFetchRecipes} from "../../../store/recipes/useActions";
+import { useInitialFetchRecipes } from "../../../store/recipes/useActions";
 
 const ReduxContainer = () => {
   const allRecipes = useRecipesData();
   const areRecipesLoading = useAreRecipesLoading();
-  const fetchRecipes = useFetchRecipes();
+  const fetchRecipes = useInitialFetchRecipes();
 
   useEffect(() => {
     fetchRecipes();

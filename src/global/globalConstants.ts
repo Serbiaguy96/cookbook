@@ -7,3 +7,5 @@ export const APP_COLORS: AppColors = {
   secondaryColor: "#FF00FF",
   thirdColor: "#C7C7CD",
 }
+
+export const COOKBOOK_SCORES = "cookbook_scores";

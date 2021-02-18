@@ -7,3 +7,9 @@ export interface RecipeUpdateData {
   id?: string;
   score?: number;
 }
+
+export interface RecipeRatingDTO {
+  score: number;
+  recipe: string;
+  id: string;
+};

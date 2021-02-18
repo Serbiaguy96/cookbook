@@ -5,7 +5,7 @@ const cs_messages = {
   "recipe.add": "Přidat recept",
   "recipe.add.name": "Název receptu",
   "recipe.add.intro_text": "Úvodní text",
-  "recipe.add.ingredients": "ingredience",
+  "recipe.add.ingredients": "Ingredience",
   "recipe.add.your_ingredients": "Vaše ingredience",
   "recipe.add.howto": "Postup",
   "recipe.add.time": "Čas",

@@ -3,7 +3,10 @@ import styled from "@emotion/styled";
 export const RecipesListContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: calc(100% - 60px);
+  margin: 0 30px;
+  max-height: calc(100% - 63px);
+  overflow-y: auto;
 `;
 
 export const RecipeItemContainer = styled.div`
@@ -11,7 +14,7 @@ export const RecipeItemContainer = styled.div`
   flex-direction: row;
   padding: 20px 5px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.thirdColor};
-  width: 100%;
+  width: calc(100% - 10px);
 
   &:last-child {
     border-bottom: none;

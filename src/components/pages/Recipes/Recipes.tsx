@@ -29,7 +29,13 @@ const Recipes = ({ recipes, areRecipesLoading }: RecipesProps) => {
   return (
     <Fragment>
       <RecipesHeader />
-      <RecipesListContainer>{recipes.map(forAllRecipes)}</RecipesListContainer>
+      {areRecipesLoading ? (
+        <Loader size={50} />
+      ) : (
+        <RecipesListContainer>
+          {recipes.map(forAllRecipes)}
+        </RecipesListContainer>
+      )}
     </Fragment>
   );
 };

@@ -1,4 +1,5 @@
 import {ERASE_RECIPE, IS_RECIPE_LOADING, RECEIVE_RECIPE} from "./actionTypes";
+import {StringIndexedDictionary} from "../../global/globalTypes";
 
 export interface Recipe {
   name: string;
@@ -33,3 +34,5 @@ export type RecipeDetailActionsTypes =
   | ReceiveRecipeAction
   | SetRecipeLoadingAction
   | EraseRecipeAction;
+
+export type CookBookScores = StringIndexedDictionary<number> | undefined;

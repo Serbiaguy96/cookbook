@@ -1,4 +1,5 @@
 import {
+  RECEIVE_NEW_RECIPES,
   RECEIVE_RECIPES,
   RECIPES_ARE_LOADING,
   SET_RECIPES_LIMIT,
@@ -25,6 +26,11 @@ export interface ReceiveRecipesAction {
   payload: { recipes: RecipesList };
 }
 
+export interface ReceiveNewRecipesAction {
+  type: typeof RECEIVE_NEW_RECIPES;
+  payload: { recipes: RecipesList };
+}
+
 export interface SetRecipesAreLoading {
   type: typeof RECIPES_ARE_LOADING;
   payload: { flag: boolean };
@@ -37,5 +43,6 @@ export interface SetRecipesLimit {
 
 export type RecipesActionsTypes =
   | ReceiveRecipesAction
+  | ReceiveNewRecipesAction
   | SetRecipesAreLoading
   | SetRecipesLimit;

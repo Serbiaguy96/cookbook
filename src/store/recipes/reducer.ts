@@ -1,5 +1,10 @@
-import {RecipesActionsTypes, RecipesState} from "./types";
-import {RECEIVE_RECIPES, RECIPES_ARE_LOADING, SET_RECIPES_LIMIT} from "./actionTypes";
+import { RecipesActionsTypes, RecipesState } from "./types";
+import {
+  RECEIVE_NEW_RECIPES,
+  RECEIVE_RECIPES,
+  RECIPES_ARE_LOADING,
+  SET_RECIPES_LIMIT,
+} from "./actionTypes";
 
 const initialState: RecipesState = {
   recipesList: [],
@@ -14,6 +19,13 @@ const recipesReducer = (
 ): RecipesState => {
   switch (action.type) {
     case RECEIVE_RECIPES: {
+      const { recipes } = action.payload;
+      return {
+        ...state,
+        recipesList: [...recipes],
+      };
+    }
+    case RECEIVE_NEW_RECIPES: {
       const { recipes } = action.payload;
       return {
         ...state,

@@ -1,5 +1,6 @@
 import {
-  ReceiveRecipesAction, RecipesList,
+  ReceiveRecipesAction,
+  RecipesList,
   SetRecipesAreLoading,
   SetRecipesLimit,
 } from "./types";
@@ -9,12 +10,23 @@ import {
   SET_RECIPES_LIMIT,
 } from "./actionTypes";
 
-export const receiveRecipesAction = (recipes: RecipesList): ReceiveRecipesAction => ({
+export const receiveRecipesAction = (
+  recipes: RecipesList
+): ReceiveRecipesAction => ({
   type: RECEIVE_RECIPES,
   payload: { recipes },
 });
 
-export const setRecipesAreLoadingAction = (flag: boolean): SetRecipesAreLoading => ({
+export const receiveNewRecipesAction = (
+  recipes: RecipesList
+): ReceiveRecipesAction => ({
+  type: RECEIVE_RECIPES,
+  payload: { recipes },
+});
+
+export const setRecipesAreLoadingAction = (
+  flag: boolean
+): SetRecipesAreLoading => ({
   type: RECIPES_ARE_LOADING,
   payload: { flag },
 });
