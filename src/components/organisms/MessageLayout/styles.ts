@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { CheckCircle } from "@material-ui/icons";
+import { CheckCircle, Error } from "@material-ui/icons";
 
 export const MessageContainer = styled.div`
   height: 100%;
@@ -15,6 +15,11 @@ export const CheckIcon = styled(CheckCircle)`
   color: green;
 `;
 
+export const ErrorIcon = styled(Error)`
+  font-size: 70px !important;
+  color: red;
+`;
+
 export const MessageText = styled.div`
   color: ${({ theme }) => theme.colors.primaryColor};
   font-size: 24px;
@@ -26,6 +31,7 @@ export const MessageText = styled.div`
 export const BackButton = styled.button`
   background-color: white;
   color: ${({ theme }) => theme.colors.secondaryColor};
+  font-weight: bold;
   padding: 10px;
   font-size: 14px;
   border: 1px solid ${({ theme }) => theme.colors.secondaryColor};

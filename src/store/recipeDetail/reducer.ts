@@ -1,5 +1,10 @@
-import {RecipeDetailActionsTypes, RecipeDetailState} from "./types";
-import {ERASE_RECIPE, IS_RECIPE_LOADING, RECEIVE_RECIPE} from "./actionTypes";
+import { RecipeDetailActionsTypes, RecipeDetailState } from "./types";
+import {
+  ERASE_RECIPE,
+  IS_RECIPE_LOADING,
+  RECEIVE_RECIPE,
+  SET_RECIPE_SCORE,
+} from "./actionTypes";
 
 const initialState: RecipeDetailState = {
   recipeMetadata: null,
@@ -21,11 +26,23 @@ const recipeDetailReducer = (
         ...state,
         isLoading: action.payload.flag,
       };
+    case SET_RECIPE_SCORE: {
+      if (state.recipeMetadata) {
+        return {
+          ...state,
+          recipeMetadata: {
+            ...state.recipeMetadata,
+            score: action.payload.score,
+          },
+        };
+      }
+      return state;
+    }
     case ERASE_RECIPE:
       return {
         ...state,
         recipeMetadata: null,
-      }
+      };
     default:
       return state;
   }

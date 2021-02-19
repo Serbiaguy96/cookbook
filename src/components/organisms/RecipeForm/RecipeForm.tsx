@@ -8,20 +8,21 @@ import Ingredients from "../../molecules/Ingredients";
 
 export type RecipeFormProps = {
   submitAction: (data: RecipeDTO | UpdateRecipeDTO) => void;
-  updateData?: UpdateRecipeDTO;
-  recipeId?: string;
+  recipeData?: RecipeDTO;
 };
 
-type FormData = Omit<RecipeDTO, "ingredients">;
+export type FormData = Omit<RecipeDTO, "ingredients">;
 
-const RecipeForm = ({ submitAction, updateData }: RecipeFormProps) => {
+const RecipeForm = ({ submitAction, recipeData }: RecipeFormProps) => {
   const { control, handleSubmit, errors } = useForm<FormData>();
   const { formatMessage } = useIntl();
-  const [ingredients, setIngredients] = useState(updateData?.ingredients || []);
+  const [ingredients, setIngredients] = useState(recipeData?.ingredients || []);
 
   const submitHandler = (data: FormData) => {
     const notEmptyIngredients = ingredients.filter((i) => !!i);
-    submitAction({ ...data, ingredients: notEmptyIngredients });
+    const updatedData = { ...data, ingredients: notEmptyIngredients };
+
+    submitAction(updatedData);
   };
 
   return (
@@ -30,7 +31,7 @@ const RecipeForm = ({ submitAction, updateData }: RecipeFormProps) => {
         name="name"
         label={formatMessage({ id: "recipe.add.name" })}
         control={control}
-        defaultValue={updateData?.name || ""}
+        defaultValue={recipeData?.name || ""}
         rules={{ pattern: /^(.*?(\b[Aa]ckee\b)[^$]*)$/, required: true }}
         error={errors.name && formatMessage({ id: "error.name" })}
       />
@@ -38,8 +39,9 @@ const RecipeForm = ({ submitAction, updateData }: RecipeFormProps) => {
         name="info"
         label={formatMessage({ id: "recipe.add.intro_text" })}
         control={control}
-        defaultValue={updateData?.info || ""}
+        defaultValue={recipeData?.info || ""}
         rules={{ required: true }}
+        multiline
         error={errors.info && formatMessage({ id: "error.mandatory" })}
       />
       <Ingredients
@@ -50,7 +52,7 @@ const RecipeForm = ({ submitAction, updateData }: RecipeFormProps) => {
         name="description"
         label={formatMessage({ id: "recipe.add.howto" })}
         control={control}
-        defaultValue={updateData?.description || ""}
+        defaultValue={recipeData?.description || ""}
         multiline
         rules={{ required: true }}
         error={errors.info && formatMessage({ id: "error.mandatory" })}
@@ -59,7 +61,7 @@ const RecipeForm = ({ submitAction, updateData }: RecipeFormProps) => {
         name="duration"
         label={formatMessage({ id: "recipe.add.time" })}
         control={control}
-        defaultValue={updateData?.duration}
+        defaultValue={recipeData?.duration}
         multiline
         type="number"
         rules={{ min: 0 }}

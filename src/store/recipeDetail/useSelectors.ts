@@ -8,10 +8,8 @@ export const useRecipeDetailData = (recipeId: string) => {
   const fetchRecipeById = useFetchRecipeById();
 
   useEffect(() => {
-    if (!recipeDetail || recipeId !== recipeDetail.id) {
-      fetchRecipeById(recipeId);
-    }
-  }, [recipeId, recipeDetail, fetchRecipeById]);
+    fetchRecipeById(recipeId);
+  }, []);
 
   return recipeDetail;
 };

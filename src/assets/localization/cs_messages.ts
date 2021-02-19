@@ -22,6 +22,7 @@ const cs_messages = {
   "error.mandatory": "Toto pole je povinné.",
 
   "success.new": "Nový recept byl úspěšně přidán",
+  "success.edit": "Recept byl úspěšně upraven a uložen",
   "success.common": "Akce byla úspěšně provedena",
   "success.back": "zpět na hlavní stránku",
 };

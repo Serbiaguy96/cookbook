@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { usePostRecipeRating } from "../../../../store/recipeDetail/useActions";
+import {usePostRecipeRating} from "../../../../store/recipeDetail/useActions";
 import { COOKBOOK_SCORES } from "../../../../global/globalConstants";
 import { CookBookScores } from "../../../../store/recipeDetail/types";
 import RecipeFooter from "./RecipeFooter";

@@ -1,26 +1,25 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useUpdateRecipeById } from "../../../store/recipeDetail/useActions";
 import {
   useIsRecipeLoading,
   useRecipeDetailData,
 } from "../../../store/recipeDetail/useSelectors";
-import RecipeDetail from "./RecipeDetail";
-import { useDeleteRecipeById } from "../../../store/recipeDetail/useActions";
-import {useErrorMessage} from "../../../store/errors/useSelectors";
+import { useParams } from "react-router-dom";
+import { useErrorMessage } from "../../../store/errors/useSelectors";
+import UpdateRecipe from "./UpdateRecipe";
 
 const ReduxContainer = () => {
   const { recipeId } = useParams<{ recipeId: string }>();
+  const updateRecipe = useUpdateRecipeById();
   const detailData = useRecipeDetailData(recipeId);
   const isLoading = useIsRecipeLoading();
   const errorMessage = useErrorMessage();
 
-  const deleteRecipeById = useDeleteRecipeById();
-
   return (
-    <RecipeDetail
-      detailData={detailData}
+    <UpdateRecipe
+      recipeData={detailData}
       isLoading={isLoading}
-      deleteRecipe={deleteRecipeById}
+      updateRecipe={updateRecipe}
       errorMessage={errorMessage}
     />
   );

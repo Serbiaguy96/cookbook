@@ -1,31 +1,33 @@
 import React from "react";
 import { useIntl } from "react-intl";
 import { useHistory } from "react-router-dom";
-import { BackButton, CheckIcon, MessageContainer, MessageText } from "./styles";
+import {
+  BackButton,
+  ErrorIcon,
+  MessageContainer,
+  MessageText,
+  CheckIcon,
+} from "./styles";
 
-export type SuccessfullOperationProps = {
-  successMessage?: string;
+export type MessageLayoutProps = {
   eraseError: () => void;
+  message: string;
+  error?: boolean;
 };
 
-const SuccessfullOperation = ({
-  successMessage,
-  eraseError,
-}: SuccessfullOperationProps) => {
+const MessageLayout = ({ eraseError, message, error }: MessageLayoutProps) => {
   const { formatMessage } = useIntl();
   const { push } = useHistory();
 
   const handleClick = () => {
     eraseError();
     push("/");
-  }
+  };
 
   return (
     <MessageContainer>
-      <CheckIcon />
-      <MessageText>
-        {successMessage || formatMessage({ id: "success.common" })}
-      </MessageText>
+      {error ? <ErrorIcon /> : <CheckIcon />}
+      <MessageText>{message}</MessageText>
       <BackButton onClick={handleClick}>
         {formatMessage({ id: "success.back" })}
       </BackButton>
@@ -33,4 +35,4 @@ const SuccessfullOperation = ({
   );
 };
 
-export default SuccessfullOperation;
+export default MessageLayout;

@@ -1,8 +1,9 @@
 import { CookBookThunk } from "../types";
 import { getIsRecipeLoading } from "./selectors";
 import {
+  eraseRecipeAction,
   receiveRecipeAction,
-  setRecipeIsLoadingAction,
+  setRecipeIsLoadingAction, setRecipeScore,
 } from "./actionCreators";
 import {
   deleteRecipeById,
@@ -101,6 +102,7 @@ export const postRecipeRatingThunk = (
         COOKBOOK_SCORES,
         JSON.stringify({ ...cookBookScores, [recipeId]: data.score })
       );
+      dispatch(setRecipeScore(data.score));
     })
     .catch(({ response }) => {
       dispatch(

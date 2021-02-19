@@ -17,7 +17,7 @@ export const fetchRecipeById = (recipeId: string) =>
 export const updateRecipeById = (recipeId: string, data: RecipeUpdateData) =>
   axiosWrapper<Recipe>({
     url: updateRecipeUrl(recipeId),
-    method: "PATCH",
+    method: "PUT",
     data: {
       ...data,
     },
