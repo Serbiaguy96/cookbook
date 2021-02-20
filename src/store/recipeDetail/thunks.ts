@@ -1,9 +1,9 @@
 import { CookBookThunk } from "../types";
 import { getIsRecipeLoading } from "./selectors";
 import {
-  eraseRecipeAction,
   receiveRecipeAction,
-  setRecipeIsLoadingAction, setRecipeScore,
+  setRecipeIsLoadingAction,
+  setRecipeScore,
 } from "./actionCreators";
 import {
   deleteRecipeById,
@@ -45,7 +45,7 @@ export const fetchRecipeByIdThunk = (recipeId: string): CookBookThunk => (
 export const updateRecipeByIdThunk = (
   recipeId: string,
   recipeData: RecipeUpdateData
-): CookBookThunk => (dispatch, getState) => {
+): CookBookThunk => (dispatch) => {
   dispatch(setRecipeIsLoadingAction(true));
   updateRecipeById(recipeId, recipeData)
     .then(() => {
@@ -63,8 +63,7 @@ export const updateRecipeByIdThunk = (
 };
 
 export const deleteRecipeByIdThunk = (recipeId: string): CookBookThunk => (
-  dispatch,
-  getState
+  dispatch
 ) => {
   dispatch(setRecipeIsLoadingAction(true));
   deleteRecipeById(recipeId)
@@ -85,7 +84,7 @@ export const deleteRecipeByIdThunk = (recipeId: string): CookBookThunk => (
 export const postRecipeRatingThunk = (
   recipeId: string,
   score: number
-): CookBookThunk => (dispatch, getState) => {
+): CookBookThunk => (dispatch) => {
   postRecipeRating(recipeId, score)
     .then(({ data }) => {
       // nastavim novy score do lacalStorage pro konkretni recept v ramci prohlizece

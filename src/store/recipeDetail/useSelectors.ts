@@ -9,7 +9,7 @@ export const useRecipeDetailData = (recipeId: string) => {
 
   useEffect(() => {
     fetchRecipeById(recipeId);
-  }, []);
+  }, [fetchRecipeById, recipeId]);
 
   return recipeDetail;
 };
