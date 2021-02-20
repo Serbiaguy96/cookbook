@@ -4,7 +4,8 @@ export const RecipesListContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: calc(100% - 60px);
-  margin: 0 30px;
+  margin: 0 25px;
+  padding: 0 5px;
   max-height: calc(100% - 63px);
   overflow-y: auto;
 `;
