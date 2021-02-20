@@ -20,9 +20,10 @@ export const HeaderImageContainer = styled.div`
   background-size: cover;
   z-index: 10;
   
-  @media only screen and (min-width: 1025px) {
+  @media only screen and (min-width: 768px) {
     background-repeat: repeat;
-  background-size: contain;
+    background-size: contain;
+    background-position: center;
   }
 `;
 
