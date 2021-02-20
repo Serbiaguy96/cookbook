@@ -44,6 +44,7 @@ const ScoreStars = ({
       value={roundedScore}
       precision={disabled ? 0.1 : 1}
       onChange={(e, value) => changeStarValue(value)}
+      readOnly={disabled}
     />
   );
 };
