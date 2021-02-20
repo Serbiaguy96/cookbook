@@ -37,4 +37,5 @@ export const BackButton = styled.button`
   border: 1px solid ${({ theme }) => theme.colors.secondaryColor};
   border-radius: 7px;
   text-transform: uppercase;
+  cursor: pointer;
 `;

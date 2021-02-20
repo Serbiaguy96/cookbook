@@ -1,16 +1,25 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { RecipeListItem, RecipesList } from "../../../store/recipes/types";
 import Loader from "../../atoms/Loader";
 import { RecipesHeader } from "../../atoms/headers";
 import { RecipesListContainer } from "./styles";
 import RecipeItem from "./RecipeItem";
+import { MainContentContainer } from "../../../global/globalStyles";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export type RecipesProps = {
   recipes: RecipesList;
   areRecipesLoading: boolean;
+  fetchMoreRecipes: () => void;
+  moreRecipesToLoad: boolean;
 };
 
-const Recipes = ({ recipes, areRecipesLoading }: RecipesProps) => {
+const Recipes = ({
+  recipes,
+  areRecipesLoading,
+  fetchMoreRecipes,
+  moreRecipesToLoad,
+}: RecipesProps) => {
   const forAllRecipes = (recipe: RecipeListItem, index: number) => {
     const { name, duration, id, score } = recipe;
     return (
@@ -19,24 +28,31 @@ const Recipes = ({ recipes, areRecipesLoading }: RecipesProps) => {
         duration={duration}
         id={id}
         score={score}
-        key={index}
+        index={index}
       />
     );
   };
 
-  if (areRecipesLoading) return <Loader size={50} />;
-
   return (
-    <Fragment>
+    <MainContentContainer hideOverflow>
       <RecipesHeader />
       {areRecipesLoading ? (
         <Loader size={50} />
       ) : (
-        <RecipesListContainer>
-          {recipes.map(forAllRecipes)}
+        <RecipesListContainer id="scrollableTarget">
+          <InfiniteScroll
+            dataLength={recipes.length}
+            next={fetchMoreRecipes}
+            hasMore={moreRecipesToLoad}
+            loader={<Loader size={25} />}
+            scrollableTarget="scrollableTarget"
+            style={{ overflow: "hidden" }}
+          >
+            {recipes.map(forAllRecipes)}
+          </InfiniteScroll>
         </RecipesListContainer>
       )}
-    </Fragment>
+    </MainContentContainer>
   );
 };
 

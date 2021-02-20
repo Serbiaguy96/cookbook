@@ -9,6 +9,7 @@ const cs_messages = {
   "recipe.add.your_ingredients": "Vaše ingredience",
   "recipe.add.howto": "Postup",
   "recipe.add.time": "Čas",
+  "recipe.not_rated": "nehodnoceno",
 
   "recipe.detail.prepare": "Příprava jídla",
   "recipe.detail.rating": "Ohodnoť tento recept",

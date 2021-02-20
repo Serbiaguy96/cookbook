@@ -14,3 +14,6 @@ export const getRecipesLimit = (state: RS): number =>
 
 export const getRecipesOffset = (state: RS): number =>
   getRecipesSlice(state).offset;
+
+export const getMoreRecipesToLoad = (state: RS): boolean =>
+  getRecipesSlice(state).moreRecipesToLoad;

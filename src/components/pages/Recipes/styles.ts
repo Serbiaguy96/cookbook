@@ -15,7 +15,8 @@ export const RecipeItemContainer = styled.div`
   padding: 20px 5px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.thirdColor};
   width: calc(100% - 10px);
-
+  cursor: pointer;
+  
   &:last-child {
     border-bottom: none;
   }

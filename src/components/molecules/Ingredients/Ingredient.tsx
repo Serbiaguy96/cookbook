@@ -1,5 +1,5 @@
 import React from "react";
-import {DeleteIcon, IngredientContainer, IngredientInput } from "./styles";
+import { DeleteIcon, IngredientContainer, IngredientInput } from "./styles";
 import { useIntl } from "react-intl";
 
 export type IngredientProps = {
@@ -21,9 +21,9 @@ const Ingredient = ({
       <IngredientInput
         value={ingredient}
         onChange={(e) => updateIngredient(e.target.value)}
-        placeholder={formatMessage({ id: "recipe.add.your_ingredients"})}
+        placeholder={formatMessage({ id: "recipe.add.your_ingredients" })}
       />
-      <DeleteIcon onClick={deleteIngredient}/>
+      <DeleteIcon onClick={deleteIngredient} />
     </IngredientContainer>
   );
 };

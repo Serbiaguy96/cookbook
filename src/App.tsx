@@ -5,7 +5,7 @@ import Recipes from "./components/pages/Recipes";
 import RecipeDetail from "./components/pages/RecipeDetail";
 import CreateRecipe from "./components/pages/CreateRecipe";
 import UpdateRecipe from "./components/pages/UpdateRecipe";
-import PageNotFound from "./components/pages/PageNotFound";
+import PageNotFound from "./components/pages/messagePages/PageNotFound";
 
 function App() {
   return (

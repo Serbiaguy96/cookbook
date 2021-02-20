@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { Route } from "react-router-dom";
 import { AppLayoutProps } from "./types";
 import { useErrorMessage } from "../../../store/errors/useSelectors";
-import CommonError from "../../pages/CommonError";
+import CommonError from "../../pages/messagePages/CommonError";
 
 const ErrorHandler: FC<AppLayoutProps> = ({
   path,

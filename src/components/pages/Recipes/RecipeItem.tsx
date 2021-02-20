@@ -14,10 +14,10 @@ import TimeEntry from "../../atoms/TimeEntry";
 import { DARK_THEME } from "../../atoms/TimeEntry/constants";
 
 export type RecipeItemProps = RecipeListItem & {
-  key: number;
+  index: number;
 };
 
-const RecipeItem = ({ name, id, key, duration, score }: RecipeItemProps) => {
+const RecipeItem = ({ name, id, index, duration, score }: RecipeItemProps) => {
   const { push } = useHistory();
 
   const handleOnRecipeClick = () => {
@@ -25,7 +25,7 @@ const RecipeItem = ({ name, id, key, duration, score }: RecipeItemProps) => {
   };
 
   return (
-    <RecipeItemContainer key={key} onClick={handleOnRecipeClick}>
+    <RecipeItemContainer key={index} onClick={handleOnRecipeClick}>
       <RecipeSmallImage src={small_plate} alt="small-plate" />
       <RecipeContentContainer>
         <RecipeContentHeader>{name}</RecipeContentHeader>

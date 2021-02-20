@@ -1,8 +1,11 @@
 import {
+  ADD_RECIPES_OFFSET,
   RECEIVE_NEW_RECIPES,
   RECEIVE_RECIPES,
   RECIPES_ARE_LOADING,
+  SET_MORE_RECIPES_TO_LOAD,
   SET_RECIPES_LIMIT,
+  SET_RECIPES_OFFSET,
 } from "./actionTypes";
 
 export interface RecipeListItem {
@@ -19,6 +22,7 @@ export interface RecipesState {
   areLoading: boolean;
   limit: number;
   offset: number;
+  moreRecipesToLoad: boolean;
 }
 
 export interface ReceiveRecipesAction {
@@ -41,8 +45,26 @@ export interface SetRecipesLimit {
   payload: { limit: number };
 }
 
+export interface SetRecipesOffsetAction {
+  type: typeof SET_RECIPES_OFFSET;
+  payload: { offset: number };
+}
+
+export interface SetMoreRecipesToLoadAction {
+  type: typeof SET_MORE_RECIPES_TO_LOAD;
+  payload: { flag: boolean };
+}
+
+export interface AddRecipesOffsetAction {
+  type: typeof ADD_RECIPES_OFFSET;
+  payload: { offset: number };
+}
+
 export type RecipesActionsTypes =
   | ReceiveRecipesAction
   | ReceiveNewRecipesAction
   | SetRecipesAreLoading
-  | SetRecipesLimit;
+  | SetRecipesLimit
+  | SetRecipesOffsetAction
+  | AddRecipesOffsetAction
+  | SetMoreRecipesToLoadAction;

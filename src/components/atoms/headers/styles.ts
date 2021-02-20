@@ -14,6 +14,7 @@ export const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   background-color: white;
+  z-index: 10;
 `;
 
 export const HeaderText = styled.h2`

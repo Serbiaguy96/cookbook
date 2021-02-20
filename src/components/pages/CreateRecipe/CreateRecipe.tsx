@@ -1,10 +1,10 @@
 import React from "react";
-import { CreateRecipeContainer } from "./styles";
 import { CreateRecipeHeader } from "../../atoms/headers";
 import RecipeForm from "../../organisms/RecipeForm";
 import { RecipeDTO, UpdateRecipeDTO } from "../../../store/recipeDetail/types";
 import { ErrorMessage } from "../../../store/errors/types";
-import SuccessfullyCreated from "../SuccessfullyCreated";
+import SuccessfullyCreated from "../messagePages/SuccessfullyCreated";
+import { MainContentContainer } from "../../../global/globalStyles";
 
 export type CreateRecipeProps = {
   postNewRecipe: (recipeData: RecipeDTO) => void;
@@ -21,10 +21,10 @@ const CreateRecipe = ({ postNewRecipe, errorMessage }: CreateRecipeProps) => {
   }
 
   return (
-    <CreateRecipeContainer>
+    <MainContentContainer>
       <CreateRecipeHeader />
       <RecipeForm submitAction={hackTypeScript} />
-    </CreateRecipeContainer>
+    </MainContentContainer>
   );
 };
 

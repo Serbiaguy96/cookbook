@@ -1,6 +1,6 @@
 import React from "react";
 import { useIntl } from "react-intl";
-import MessageLayout from "../../organisms/MessageLayout";
+import MessageLayout from "../../../organisms/MessageLayout";
 
 const SuccessfullyUpdated = () => {
   const { formatMessage } = useIntl();

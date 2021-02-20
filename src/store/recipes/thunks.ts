@@ -5,9 +5,12 @@ import {
   getRecipesOffset,
 } from "./selectors";
 import {
+  addRecipesOffsetAction,
   receiveNewRecipesAction,
   receiveRecipesAction,
+  setMoreRecipesToLoad,
   setRecipesAreLoadingAction,
+  setRecipesOffsetAction,
 } from "./actionCreators";
 import {
   fetchRecipes,
@@ -22,15 +25,20 @@ export const fetchInitialRecipesThunk = (): CookBookThunk => (
 ) => {
   const state = getState();
   const limit = getRecipesLimit(state);
-  const offset = getRecipesOffset(state);
   const areLoading = getAreRecipesLoading(state);
 
   if (areLoading) return;
 
   dispatch(setRecipesAreLoadingAction(true));
-  fetchRecipes(limit, offset)
+  fetchRecipes(limit, 0)
     .then(({ data }) => {
       dispatch(receiveRecipesAction(data));
+      if (data.length < limit) {
+        dispatch(setMoreRecipesToLoad(false));
+      } else {
+        dispatch(setMoreRecipesToLoad(true));
+      }
+      dispatch(setRecipesOffsetAction(data.length));
       dispatch(eraseErrorAction());
     })
     .catch(({ response }) => {
@@ -55,10 +63,13 @@ export const fetchNewRecipesThunk = (): CookBookThunk => (
 
   if (areLoading) return;
 
-  dispatch(setRecipesAreLoadingAction(true));
   fetchRecipes(limit, offset)
     .then(({ data }) => {
       dispatch(receiveNewRecipesAction(data));
+      if (data.length < limit) {
+        dispatch(setMoreRecipesToLoad(false));
+      }
+      dispatch(addRecipesOffsetAction(data.length));
       dispatch(eraseErrorAction());
     })
     .catch(({ response }) => {
@@ -68,8 +79,7 @@ export const fetchNewRecipesThunk = (): CookBookThunk => (
           message: response.data,
         })
       );
-    })
-    .finally(() => dispatch(setRecipesAreLoadingAction(false)));
+    });
 };
 
 export const createNewRecipeThunk = (recipeData: RecipeDTO): CookBookThunk => (

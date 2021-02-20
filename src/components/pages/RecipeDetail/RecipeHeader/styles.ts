@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 
 import big_plate from "../../../../assets/images/big_plate.png";
+import {Add, ArrowBack, Delete, Edit} from "@material-ui/icons";
 
 export const HeaderContainer = styled.header`
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
+  width: 100%;
 `;
 
 export const HeaderImageContainer = styled.div`
@@ -19,6 +19,11 @@ export const HeaderImageContainer = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 10;
+  
+  @media only screen and (min-width: 1025px) {
+    background-repeat: repeat;
+  background-size: contain;
+  }
 `;
 
 export const ActionsContainer = styled.div`
@@ -51,4 +56,27 @@ export const DetailActionsContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 130px;
+`;
+
+export const NotRatedLabel = styled.span`
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #ffffff;
+`
+
+export const AddIcon = styled(Add)`
+  cursor: pointer;
+`;
+
+export const ArrowBackIcon = styled(ArrowBack)`
+  cursor: pointer;
+`;
+
+export const DeleteIcon = styled(Delete)`
+  cursor: pointer;
+`;
+
+export const EditIcon = styled(Edit)`
+  cursor: pointer;
 `;

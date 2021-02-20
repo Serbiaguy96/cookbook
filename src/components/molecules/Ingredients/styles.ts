@@ -23,6 +23,10 @@ export const IngredientContainer = styled.div`
   align-items: center;
   width: 100%;
   margin: 10px 0;
+  
+  @media only screen and (min-width: 1025px) {
+    width: 50%;
+  }
 `;
 
 export const DeleteIcon = styled(Delete)`

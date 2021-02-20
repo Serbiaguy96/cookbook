@@ -3,10 +3,10 @@ import { Recipe } from "../../../store/recipeDetail/types";
 import Loader from "../../atoms/Loader";
 import RecipeHeader from "./RecipeHeader";
 import RecipeContent from "./RecipeContent";
-import { RecipeDetailContainer } from "./styles";
 import RecipeFooter from "./RecipeFooter";
 import { ErrorMessage } from "../../../store/errors/types";
-import CommonSuccess from "../CommonSuccess";
+import CommonSuccess from "../messagePages/CommonSuccess";
+import { MainContentContainer } from "../../../global/globalStyles";
 
 export type RecipeDetailProps = {
   detailData: Recipe | null;
@@ -38,7 +38,7 @@ const RecipeDetail = ({
   }
 
   return (
-    <RecipeDetailContainer>
+    <MainContentContainer>
       <RecipeHeader
         name={name}
         score={score}
@@ -52,7 +52,7 @@ const RecipeDetail = ({
         info={info}
       />
       <RecipeFooter recipeId={id} />
-    </RecipeDetailContainer>
+    </MainContentContainer>
   );
 };
 

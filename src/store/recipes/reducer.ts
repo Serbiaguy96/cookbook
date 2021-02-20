@@ -1,9 +1,12 @@
 import { RecipesActionsTypes, RecipesState } from "./types";
 import {
+  ADD_RECIPES_OFFSET,
   RECEIVE_NEW_RECIPES,
   RECEIVE_RECIPES,
   RECIPES_ARE_LOADING,
+  SET_MORE_RECIPES_TO_LOAD,
   SET_RECIPES_LIMIT,
+  SET_RECIPES_OFFSET,
 } from "./actionTypes";
 
 const initialState: RecipesState = {
@@ -11,6 +14,7 @@ const initialState: RecipesState = {
   areLoading: false,
   limit: 10,
   offset: 0,
+  moreRecipesToLoad: true,
 };
 
 const recipesReducer = (
@@ -41,6 +45,21 @@ const recipesReducer = (
       return {
         ...state,
         limit: action.payload.limit,
+      };
+    case SET_RECIPES_OFFSET:
+      return {
+        ...state,
+        offset: action.payload.offset,
+      };
+    case ADD_RECIPES_OFFSET:
+      return {
+        ...state,
+        offset: state.offset + action.payload.offset,
+      };
+    case SET_MORE_RECIPES_TO_LOAD:
+      return {
+        ...state,
+        moreRecipesToLoad: action.payload.flag,
       };
     default:
       return state;

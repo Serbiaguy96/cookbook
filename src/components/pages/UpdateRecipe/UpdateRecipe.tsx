@@ -6,11 +6,11 @@ import {
 } from "../../../store/recipeDetail/types";
 import { RecipeUpdateData } from "../../../requests/recipeDetail/types";
 import { ErrorMessage } from "../../../store/errors/types";
-import { CreateRecipeContainer } from "../CreateRecipe/styles";
 import { CreateRecipeHeader } from "../../atoms/headers";
 import RecipeForm from "../../organisms/RecipeForm";
 import Loader from "../../atoms/Loader";
-import SuccessfullyUpdated from "../SuccessfullyUpdated";
+import SuccessfullyUpdated from "../messagePages/SuccessfullyUpdated";
+import { MainContentContainer } from "../../../global/globalStyles";
 
 export type UpdateRecipeProps = {
   recipeData: Recipe | null;
@@ -44,10 +44,10 @@ const UpdateRecipe = ({
   };
 
   return (
-    <CreateRecipeContainer>
+    <MainContentContainer>
       <CreateRecipeHeader />
       <RecipeForm submitAction={hackTypeScript} recipeData={updateData} />
-    </CreateRecipeContainer>
+    </MainContentContainer>
   );
 };
 

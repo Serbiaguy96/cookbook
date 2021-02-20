@@ -8,6 +8,7 @@ import {
   MessageText,
   CheckIcon,
 } from "./styles";
+import {MainContentContainer} from "../../../global/globalStyles";
 
 export type MessageLayoutProps = {
   eraseError: () => void;
@@ -25,13 +26,15 @@ const MessageLayout = ({ eraseError, message, error }: MessageLayoutProps) => {
   };
 
   return (
-    <MessageContainer>
-      {error ? <ErrorIcon /> : <CheckIcon />}
-      <MessageText>{message}</MessageText>
-      <BackButton onClick={handleClick}>
-        {formatMessage({ id: "success.back" })}
-      </BackButton>
-    </MessageContainer>
+    <MainContentContainer>
+      <MessageContainer>
+        {error ? <ErrorIcon /> : <CheckIcon />}
+        <MessageText>{message}</MessageText>
+        <BackButton onClick={handleClick}>
+          {formatMessage({ id: "success.back" })}
+        </BackButton>
+      </MessageContainer>
+    </MainContentContainer>
   );
 };
 

@@ -8,6 +8,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-color: #C7C7CD;
 }
 
 #root {
@@ -16,7 +18,7 @@ body {
   //overflow-x: hidden;
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1025px) {
   #root {
     width: 70%;
     margin: auto;
