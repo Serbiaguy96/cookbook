@@ -20,7 +20,8 @@ export type RecipeItemProps = RecipeListItem & {
 const RecipeItem = ({ name, id, index, duration, score }: RecipeItemProps) => {
   const { push } = useHistory();
 
-  const handleOnRecipeClick = () => {
+  const handleOnRecipeClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
     push(`/recipe-detail/${id}`);
   };
 
